@@ -34,46 +34,30 @@ class User < ActiveRecord::Base
   end
 
   ## TODO 実装
-  def have(item)
-  end
-
-  def unhave(item)
-  end
-
-  def have?(item)
-  end
-
-  def want(item)
-  end
-
-  def unwant(item)
-  end
-
-  def want?(item)
-  end
+ 
   
   #want メソッド
-  def want(want_item)
-    wants.find_or_create_by(item_id: want_item.id)
+  def want(item)
+    wants.find_or_create_by(item_id: item.id)
   end
-  def want?(want_item)
-    item_id.include?(want_item)
+  def want?(item)
+    want_items.include?(item)
   end
-  def unwant(want_item)
-    want_item=find_by(item_id: want_item.id)
+  def unwant(item)
+    want_item=wants.find_by(item_id: item.id)
     want_item.destroy if want_item
   end
   
   #have method
   
-  def have(have_item)
-    haves.find_or_create_by(item_id: have_item.id)
+  def have(item)
+    haves.find_or_create_by(item_id: item.id)
   end
-  def have?(have_item)
-    item_id.include?(have_item)
+  def have?(item)
+    have_items.include?(item)
   end
-  def unhave(have_item)
-    have_item=find_by(item_id: have_item.id)
+  def unhave(item)
+    have_item=haves.find_by(item_id: item.id)
     have_item.destroy if have_item
   end
   
