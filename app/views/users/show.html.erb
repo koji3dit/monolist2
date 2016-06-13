@@ -1,3 +1,8 @@
+<% content_for :head do %>
+  <meta name="description" content="<%= @user.name %>のモノリストです。">
+  <title><%= @user.name %></title>
+<% end %>
+
 <%= render 'profile' , user: @user %>
 
 
