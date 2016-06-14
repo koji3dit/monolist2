@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426042549) do
+ActiveRecord::Schema.define(version: 20160614001158) do
 
   create_table "items", force: :cascade do |t|
     t.string   "title"
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20160426042549) do
   add_index "ownerships", ["item_id"], name: "index_ownerships_on_item_id"
   add_index "ownerships", ["user_id", "item_id", "type"], name: "index_ownerships_on_user_id_and_item_id_and_type", unique: true
   add_index "ownerships", ["user_id"], name: "index_ownerships_on_user_id"
+
+  create_table "rankings", force: :cascade do |t|
+    t.string   "item_id"
+    t.integer  "have_count"
+    t.integer  "want_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
